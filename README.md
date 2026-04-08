@@ -23,9 +23,12 @@ Instead of using a single model, this system compares multiple algorithms to ide
 ## 👨‍💻 Team
 - K. Preatham
 - K. Hari Venkat Narayana 
-- M. Sai Teja  
+- M. Sai Teja
+
 ## 🔥 Status
 Completed as Final Year Major Project
+
+⚠️ Note: Sensitive credentials are managed using environment variables.
 
 
 ## 📷 Project Screenshots
