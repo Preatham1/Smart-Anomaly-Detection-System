@@ -127,6 +127,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# YOUR EMAIL + YOUR APP PASSWORD
-EMAIL_HOST_USER = "preathamchowdary.k@gmail.com"
-EMAIL_HOST_PASSWORD = "lpti dbmd trrn vcwl"
+import os
+
+EMAIL_HOST_USER = os.environ.get("EMAIL_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASS")
