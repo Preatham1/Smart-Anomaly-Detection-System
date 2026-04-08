@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="/static/css/matrix.css">
+</head>
+
+<body>
+    <h1 class="project-title">SMART ANOMALY DETECTION SYSTEM</h1>
+
+    <canvas id="matrixRain"></canvas>
+    <script src="/static/js/matrix.js"></script>
+
+    <div class="cyber-card">
+        <h2>🟩 OTP Verification</h2>
+        <h3>Enter the code sent to your email</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="otp-box">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+                <input type="text" maxlength="1" class="otp-input">
+            </div>
+
+            <input type="hidden" name="otp" id="finalOtp"><br><br>
+
+            <button type="submit" class="cyber-btn">Verify OTP</button>
+        </form>
+    </div>
+
+    <!-- ✅ OTP SCRIPT -->
+    <script>
+    window.onload = function() {
+
+        const inputs = document.querySelectorAll(".otp-input");
+
+        inputs.forEach((input, index) => {
+
+            input.addEventListener("input", function() {
+                if (this.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener("keydown", function(e) {
+                if (e.key === "Backspace" && this.value === "" && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+
+        });
+
+        document.querySelector("form").addEventListener("submit", function() {
+            let otp = "";
+            inputs.forEach(input => otp += input.value);
+            document.getElementById("finalOtp").value = otp;
+        });
+
+    };
+    </script>
+
+</body>
+</html>

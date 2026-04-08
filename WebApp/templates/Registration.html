@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Smart Anomaly Detection</title>
+    <link rel="stylesheet" href="/static/css/matrix.css">
+</head>
+
+<body>
+    <h1 class="project-title">SMART ANOMALY DETECTION SYSTEM</h1>
+    <canvas id="matrixRain"></canvas>
+    <script src="/static/js/matrix.js"></script>
+
+    <div class="cyber-card">
+        <h2>🟩 User Registration</h2>
+    
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color:red; font-weight:bold;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter Username" class="glow-input"><br><br>
+            <input type="email" name="email" placeholder="Enter Email" class="glow-input"><br><br>
+            <input type="password" name="password" placeholder="Create Password" class="glow-input"><br><br>
+            <button type="submit" class="cyber-btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>

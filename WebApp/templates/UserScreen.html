@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Model Results - Smart Anomaly Detection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+}
+
+/* Fade-in + slide-up animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #333333; /* Dark gray - good contrast on light backgrounds */
+    text-shadow: 0 0 10px rgba(0,0,0,0.1); /* Changed shadow to be subtle and darker */
+    margin-top: 30px;
+    font-weight: 600;
+    animation: fadeUp 0.8s ease-in-out;
+}
+
+/* Table styling */
+table {
+    width: 85%;
+    margin: 40px auto;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    animation: fadeUp 1s ease-in-out;
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #000000; /* Changed to black for better visibility */
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #00e0ff;
+    letter-spacing: 1px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: 0.3s ease;
+}
+
+/* Buttons */
+button {
+    margin: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeUp 1.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 224, 255, 0.8);
+}
+
+.btn-green { background-color: #28a745; }
+.btn-yellow { background-color: #f0ad4e; }
+.btn-blue { background-color: #007bff; }
+.btn-red { background-color: #dc3545; }
+.btn-cyan { background-color: #17a2b8; }
+
+/* Smooth fade-in for footer */
+footer {
+    animation: fadeUp 1.4s ease-in-out;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 40px;
+}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>📈 Model Performance Results</h1>
+
+    {% if data %}
+      <div class="table-responsive">
+        {{ data|safe }}
+      </div>
+    {% else %}
+      <p>No data available yet. Run an algorithm to see results!</p>
+    {% endif %}
+
+  <!-- 🔹 Animated Button Section -->
+<div style="margin-top: 30px;">
+    <button class="btn-green" onclick="window.location.href='/upload/'">Upload Dataset</button>
+    <button class="btn-yellow" onclick="window.location.href='/run/existing/'">Run Existing</button>
+    <button class="btn-blue" onclick="window.location.href='/run/propose/'">Run AutoEncoder</button>
+    <button class="btn-red" onclick="window.location.href='/run/lstm/'">Run LSTM</button>
+    <button class="btn-cyan" onclick="window.location.href='/graph/'">View Graph</button>
+  </div>
+  </footer>  
+  <p class="footer-text">Smart Anomaly Detection System • Powered by Django & Machine Learning</p>
+<!-- Loader Overlay -->
+<div id="loader-overlay" style="display: none;">
+    <div class="spinner"></div>
+    <p>Training Models... Please wait ⏳</p>
+  </div>
+  
+  <style>
+    #loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 10, 0.85);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      font-size: 1.3rem;
+      backdrop-filter: blur(4px);
+    }
+  
+    .spinner {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid #00c3ff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+  
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  
+  <script>
+    // show loader when any model run button is clicked
+    document.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("loader-overlay");
+  
+      document.querySelectorAll("a, button").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (btn.innerText.includes("Run") || btn.innerText.includes("Graph")) {
+            loader.style.display = "flex";
+          }
+        });
+      });
+    });
+  </script>
+  </body>
+</html>

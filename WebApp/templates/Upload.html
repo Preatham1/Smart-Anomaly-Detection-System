@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Dataset - Smart Anomaly Detection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #141E30, #243B55);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      color: white; /* Changed text color to white */
+      font-weight: 500; /* Added slight boldness */
+    }
+    input[type="file"] {
+      margin: 15px 0;
+      color: white; /* Changed file input text to white */
+      background-color: rgba(255, 255, 255, 0.1); /* Added background for better visibility */
+      border: 1px solid rgba(255, 255, 255, 0.3); /* Added border */
+      border-radius: 5px;
+      padding: 8px;
+    }
+    .btn-custom {
+      border-radius: 30px;
+      padding: 10px 25px;
+      margin: 8px;
+      transition: 0.3s;
+    }
+    .btn-custom:hover {
+      transform: scale(1.05);
+    }
+    .result-box {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 20px;
+      color: #cce7ff;
+      font-weight: 500; /* Added slight boldness */
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>📊 Upload Dataset (CSV)</h2>
+    <form method="POST" enctype="multipart/form-data" action="/action/upload/">
+      {% csrf_token %}
+      <input type="file" name="t1" class="form-control" required>
+      <button type="submit" class="btn btn-success btn-custom">Upload</button>
+    </form>
+
+    {% if data %}
+    <div class="result-box">
+      <h5> UPLOAD RESULT:</h5>
+      <p>{{ data|safe }}</p>
+    </div>
+    {% endif %}
+
+    <div class="mt-3">
+      <a href="/run/existing/" class="btn btn-warning btn-custom">Run Existing</a>
+      <a href="/run/propose/" class="btn btn-primary btn-custom">Run AutoEncoder</a>
+      <a href="/run/lstm/" class="btn btn-danger btn-custom">Run LSTM</a>
+      <a href="/graph/" class="btn btn-info btn-custom">View Graph</a>
+    </div>
+  </div>
+  <!-- Loader Overlay -->
+<div id="loader-overlay" style="display: none;">
+  <div class="spinner"></div>
+  <p>Training Models... Please wait ⏳</p>
+</div>
+
+<style>
+  #loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 1.3rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .spinner {
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    border-top: 6px solid #00c3ff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  // show loader when any model run button is clicked
+  document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById("loader-overlay");
+
+    document.querySelectorAll("a, button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.innerText.includes("Run") || btn.innerText.includes("Graph")) {
+          loader.style.display = "flex";
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+/* MATRIX RAIN BACKGROUND */
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    font-family: 'Orbitron', sans-serif;
+}
+
+canvas#matrixRain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* CYBER GLOW INPUTS */
+input, button {
+    border-radius: 5px !important;
+}
+
+/* Glowing input */
+.glow-input {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00ff41;
+    padding: 10px;
+    width: 100%;
+    color: #00ff41;
+    outline: none;
+    font-size: 1rem;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+.glow-input::placeholder {
+    color: #00ff41;
+}
+
+/* Buttons */
+.cyber-btn {
+    padding: 12px 25px;
+    width: 100%;
+    background-color: #00ff41;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #00ff41;
+    transition: 0.3s;
+}
+
+.cyber-btn:hover {
+    box-shadow: 0 0 25px #00ff41;
+    background-color: #00ff41cc;
+}
+
+/* Card */
+.cyber-card {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00ff41;
+    border-radius: 12px;
+    padding: 30px;
+    width: 400px;
+    margin: auto;
+    margin-top: 120px;
+    box-shadow: 0 0 20px #00ff41;
+    animation: fadeUp 1s ease-in-out;
+}
+
+/* Fade Up */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2, h3, h1 {
+    color: #00ff41;
+    text-shadow: 0 0 15px #00ff41;
+}
+.project-title {
+    position: absolute;
+    top: 10px;                /* move UP */
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: 30px;          /* bigger */
+    font-weight: 900;
+    color: #00ff41;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 10px #00ff41,
+        0 0 20px #00ff41,
+        0 0 40px #00ff41,
+        0 0 80px #00ff41,
+        0 0 120px #00ff41;
+
+    letter-spacing: 6px;
+    z-index: 9999;
+    font-family: 'Orbitron', sans-serif;
+}
+.otp-box {
+    display: flex;              /* 🔥 KEY FIX */
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.otp-input {
+    width: 45px;
+    height: 55px;
+
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+
+    background: black;
+    border: 2px solid #00ff41;
+    color: #00ff41;
+
+    border-radius: 8px;
+    outline: none;
+
+    box-shadow: 0 0 10px #00ff41;
+
+    display: block;   /* 🔥 IMPORTANT (remove inline-block) */
+}
+
+.otp-input:focus {
+    box-shadow: 0 0 25px #00ff41;
+    transform: scale(1.1);
+}

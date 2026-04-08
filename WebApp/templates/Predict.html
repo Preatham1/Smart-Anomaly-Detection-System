@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Upload Test CSV (to Predict)</h2>
+    <form method="post" enctype="multipart/form-data" action="/action/predict/">
+      {% csrf_token %}
+      <input type="file" name="t1" accept=".csv" required>
+      <input type="submit" value="Predict">
+    </form>
+
+    <p><a href="/upload/">Upload Training Data</a></p>
+  </body>
+</html>
