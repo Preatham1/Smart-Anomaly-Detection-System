@@ -21,9 +21,21 @@ This is a major project focused on detecting abnormal patterns in data using Mac
 Instead of using a single model, this system compares multiple algorithms to identify the best-performing one.
 
 ## 👨‍💻 Team
-- K. Hari Venkat Narayana  
+- K. Preatham
+- K. Hari Venkat Narayana 
 - M. Sai Teja  
-- K. Preatham  
-
 ## 🔥 Status
 Completed as Final Year Major Project
+
+
+## 📷 Project Screenshots
+
+HOME
+<img width="844" height="614" alt="Screenshot 2026-03-10 at 6 15 13 PM" src="https://github.com/user-attachments/assets/e6762e55-2b1a-489d-b774-3c1ff6363f8c" />
+
+DASHBOARD
+<img width="1470" height="923" alt="Screenshot 2026-03-25 at 6 07 52 AM" src="https://github.com/user-attachments/assets/bd7614fd-4d77-405f-ad4e-8329cafd5c35" />
+
+GRAPH
+<img width="1470" height="841" alt="Screenshot 2026-03-25 at 6 10 23 AM" src="https://github.com/user-attachments/assets/5edbcea1-796d-45c0-a9a4-d8e2648fc612" />
+
